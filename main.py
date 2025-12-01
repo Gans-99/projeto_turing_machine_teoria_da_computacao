@@ -22,10 +22,12 @@ def teste_y_x():
     q2.addTransition(q2, '1')
     q2.addTransition(q1, '0')
 
-    w = '0000110'
+    w = '000111'
 
     mt = Machine(q0, w, 20)
     mt.run()
 
 if __name__ == "__main__":
     teste_y_x()
+
+    #teste push
