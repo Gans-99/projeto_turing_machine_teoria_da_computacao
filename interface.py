@@ -7,7 +7,7 @@ class TuringApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Máquina de Turing")
-        self.root.geometry("1200x800")
+        self.root.geometry("1800x1100")
         self.root.configure(bg="#ffffff")
 
         self.style = ttk.Style()
