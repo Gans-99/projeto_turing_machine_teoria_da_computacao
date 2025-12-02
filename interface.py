@@ -7,17 +7,16 @@ class TuringApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Máquina de Turing")
-        self.root.geometry("800x600")
-        self.root.configure(bg="#1e1e2e")
+        self.root.geometry("1200x800")
+        self.root.configure(bg="#ffffff")
 
         self.style = ttk.Style()
-        self.style.configure("TLabel", background="#1e1e2e", foreground="white", font=("Segoe UI", 12))
         self.style.configure("TButton", font=("Segoe UI", 11), padding=6)
-        self.style.map("TButton", background=[("active", "#3b82f6")])
+        self.style.map("TButton", background=[("active", "#665f6a")])
 
         # --- Título ---
-        title = ttk.Label(root, text="Simulador de Máquina de Turing", font=("Segoe UI", 18, "bold"), foreground="#38bdf8")
-        title.pack(pady=15)
+        title = ttk.Label(root, text="Simulador de Máquina de Turing", font=("Segoe UI", 18, "bold"), foreground="#29251c", background="#ffffff")
+        title.pack(pady=20)
 
         # --- Entrada da fita ---
         entry_frame = ttk.Frame(root)
@@ -36,14 +35,14 @@ class TuringApp:
         self.combo_test.grid(row=1, column=1, padx=5, pady=5)
 
         # --- Área de fita ---
-        self.canvas = tk.Canvas(root, width=700, height=150, bg="#2e2e3e", highlightthickness=0)
+        self.canvas = tk.Canvas(root, width=700, height=150, bg="#e3e3e9", highlightthickness=0)
         self.canvas.pack(pady=20)
         self.cells = []
         self.tape_data = []
         self.head_pos = 0
 
         # --- Área de saída ---
-        self.text_output = tk.Text(root, width=90, height=12, bg="#181825", fg="white", insertbackground="white", font=("Consolas", 10))
+        self.text_output = tk.Text(root, width=90, height=12, bg="#29251c", fg="white", insertbackground="white", font=("Consolas", 10))
         self.text_output.pack(pady=10)
 
     def build_tape(self, tape_str):
