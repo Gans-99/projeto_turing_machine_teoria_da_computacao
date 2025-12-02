@@ -13,7 +13,7 @@ class State:
     def setFinal(self):
         self.isFinal = True
 
-    # Agora aceita: (estado_destino, leitura, escrita, direcao)
+    # Aceita: (estado_destino, leitura, escrita, direcao)
     def addTransition(self, state, read=None, write=None, move=None):
         edge = Edge.instance(read, write, move)
         t = Transition(state, edge)
