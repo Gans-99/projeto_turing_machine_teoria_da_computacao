@@ -30,7 +30,7 @@ class TuringApp:
 
         # --- Seletor de teste ---
         ttk.Label(entry_frame, text="Teste:").grid(row=1, column=0, padx=5, pady=5)
-        self.combo_test = ttk.Combobox(entry_frame, values=["a^n b^n", "Binário múltiplo de 3", "Número par de 1s"])
+        self.combo_test = ttk.Combobox(entry_frame, values=["a^n b^n", "a^n b^n c^n", "Binário múltiplo de 3", "Número par de 1s"])
         self.combo_test.current(0)
         self.combo_test.grid(row=1, column=1, padx=5, pady=5)
 
@@ -102,6 +102,46 @@ class TuringApp:
             q1.addTransition(q2, '0', '0', 'D')
             q2.addTransition(q2, '1', '1', 'D')
             q2.addTransition(q1, '0', '0', 'D')
+        elif choice == "a^n b^n c^n":
+            q_start = State('q_start')  
+            q0 = State('q0')            
+            q1 = State('q1')            
+            q2 = State('q2')            
+            q3 = State('q3')            
+            qf = State('qf')            
+            qf.setFinal()
+
+            q_start.addTransition(q1, 'a', 'A', 'D')   
+            q_start.addTransition(q_start, 'A', 'A', 'D')  
+            q_start.addTransition(q_start, 'B', 'B', 'D') 
+            q_start.addTransition(q_start, 'C', 'C', 'D')  
+          
+            q0.addTransition(q1, 'a', 'A', 'D')
+            q0.addTransition(q0, 'A', 'A', 'D')
+            q0.addTransition(q0, 'B', 'B', 'D')
+            q0.addTransition(q0, 'C', 'C', 'D')
+            q0.addTransition(qf, None, None, 'D')  
+
+            q1.addTransition(q1, 'a', 'a', 'D')
+            q1.addTransition(q1, 'A', 'A', 'D')
+            q1.addTransition(q1, 'B', 'B', 'D')
+            q1.addTransition(q1, 'C', 'C', 'D')
+            q1.addTransition(q2, 'b', 'B', 'D')
+
+            q2.addTransition(q2, 'a', 'a', 'D')
+            q2.addTransition(q2, 'A', 'A', 'D')
+            q2.addTransition(q2, 'b', 'b', 'D')
+            q2.addTransition(q2, 'B', 'B', 'D')
+            q2.addTransition(q2, 'C', 'C', 'D')
+            q2.addTransition(q3, 'c', 'C', 'E')  
+
+            q3.addTransition(q3, 'A', 'A', 'E')
+            q3.addTransition(q3, 'B', 'B', 'E')
+            q3.addTransition(q3, 'C', 'C', 'E')
+            q3.addTransition(q3, 'a', 'a', 'E')
+            q3.addTransition(q3, 'b', 'b', 'E')
+            q3.addTransition(q3, 'c', 'c', 'E')
+            q3.addTransition(q0, None, None, 'D')
         else:  # Número par de 1s
             q0 = State('q0'); q1 = State('q1')
             q0.setFinal()
